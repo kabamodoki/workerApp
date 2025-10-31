@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+dist/
+tmp/
+
+# Java
+target/
+*.class
+*.jar
+
+# Docker
+db-data/
+*.env
+
+# OS・IDE
+.DS_Store
+Thumbs.db
+.idea/
+*.log
+
+# VSCode settings (optional)
+.vscode/
+
+# OS junk files
+.DS_Store
+Thumbs.db
