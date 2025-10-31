@@ -1,15 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideKeycloak } from 'keycloak-angular';
-import { App } from './app/app';
+import 'zone.js';
+import { AttendanceDashboardComponent } from './app/attendance-dashboard/attendance-dashboard.component';
+import { environment } from './environments/environment';
 
-bootstrapApplication(App, {
+bootstrapApplication(AttendanceDashboardComponent, {
   providers: [
     provideKeycloak({
-      config: {
-        url: 'http://localhost:8080',
-        realm: 'attendance-realm',
-        clientId: 'attendance-client',
-      },
+      config: environment.keycloak,
       initOptions: {
         onLoad: 'login-required',
         checkLoginIframe: false,
