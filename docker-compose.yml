@@ -24,6 +24,24 @@ services:
     networks:
       - app-net
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: db
+      KC_DB_URL_DATABASE: attendance_db
+      KC_DB_USERNAME: appuser
+      KC_DB_PASSWORD: secretpassword
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - app-net
+
   frontend:
     image: node:18
     working_dir: /app
