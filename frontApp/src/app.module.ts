@@ -1,28 +1,10 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ApplicationsComponent } from './app/dashboard/applications/applications.component';
-import { AttendanceComponent } from './app/dashboard/attendance/attendance.component';
-import { HomeComponent } from './app/dashboard/home/home.component';
-import { LayoutComponent } from './app/layout/layout.component';
-import { SidebarComponent } from './app/sidebar/sidebar.component';
-
-@NgModule({
-    declarations: [
-        AppComponent,
-        SidebarComponent,
-        LayoutComponent,
-        HomeComponent,
-        AttendanceComponent,
-        ApplicationsComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+@Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [RouterModule],
+    template: `<router-outlet></router-outlet>`
 })
-export class AppModule { }
+export class AppComponent { }
