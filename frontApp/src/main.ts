@@ -1,22 +1,21 @@
-import { bootstrapApplication, BootstrapContext } from '@angular/platform-browser';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { provideKeycloak } from 'keycloak-angular';
-import 'zone.js/node';
+import 'zone.js';
 import { AttendanceDashboardComponent } from './app/attendance-dashboard/attendance-dashboard.component';
 import { environment } from './environments/environment';
 
-const config = {
+bootstrapApplication(AttendanceDashboardComponent, {
   providers: [
     provideKeycloak({
-      config: environment.keycloak,
+      config: {
+        url: environment.keycloak.url,
+        realm: environment.keycloak.realm,
+        clientId: environment.keycloak.clientId,
+      },
       initOptions: {
         onLoad: 'login-required',
         checkLoginIframe: false,
       },
     }),
   ],
-};
-
-const bootstrap = (context: BootstrapContext) =>
-  bootstrapApplication(AttendanceDashboardComponent, config, context);
-
-export default bootstrap;
+});
